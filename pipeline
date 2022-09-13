@@ -1,0 +1,6 @@
+#stage 1 Build
+docker build -t jadilsonpaiva/nodeapp .
+
+#stage 2 save
+docker push jadilsonpaiva/nodeapp
+
