@@ -1,7 +1,24 @@
-#stage 1 Build
-cd /root/nodeapp
-docker build -t teste .
+#Removendo a imagem
+docker image rm -f jadilsonpaiva/nodeapp
 
-#stage 2 save
+
+#Removendo o container
+docker container rm -f nodeapp
+
+
+#stage 1 Build
+#cd /root/nodeapp
+docker build -t jadilsonpaiva/nodeapp .
+
+
+#stage 2 Teste
+docker container run -dit -p 80:3000 --name nodeapp jadilsonpaiva/nodeapp
+
+
+#stage 3 Release
 docker push jadilsonpaiva/nodeapp
 
+
+#stage 4 deploy
+ssh root@192.168.233.165 'docker container rm -f nodeapp'
+ssh root@192.168.233.165 'docker container run -dit -p 80:3000 --name nodeapp jadilsonpaiva/nodeapp'

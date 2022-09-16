@@ -1,0 +1,2 @@
+docker image pull nginx
+docker container run -dit -p 80:80 nginx
