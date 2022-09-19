@@ -1,8 +1,5 @@
-#Removendo a imagem
-docker image rm -f jadilsonpaiva/nodeapp
-
-
-#Removendo o container
+#Parando e removendo o container
+docker container stop nodeapp
 docker container rm -f nodeapp
 
 
@@ -20,5 +17,7 @@ docker push jadilsonpaiva/nodeapp
 
 
 #stage 4 deploy
+ssh root@192.168.233.165 'docker container stop nodeapp'
 ssh root@192.168.233.165 'docker container rm -f nodeapp'
+ssh root@192.168.233.165 'docker image pull jadilsonpaiva/nodeapp'
 ssh root@192.168.233.165 'docker container run -dit -p 80:3000 --name nodeapp jadilsonpaiva/nodeapp'
