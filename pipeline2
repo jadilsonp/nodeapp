@@ -1,0 +1,17 @@
+#Parando e removendo o container
+cd /root/nodeapp
+docker-compose down
+
+
+#stage 1 Build
+docker image rm -f jadilsonpaiva/nodeapp
+docker build -t jadilsonpaiva/nodeapp .
+docker-compose -f compose-teste.yml up -d
+
+#stage 2 Release
+docker image push jadilsonpaiva/nodeapp
+
+#stage 4 deploy
+ssh root@192.168.233.142 'cd /root/nodeapp/; docker-compose down; docker image rm -f jadilsonpaiva/nodeapp'
+scp /root/nodeapp/compose-deploy.yml root@192.168.233.142:/root/nodeapp
+ssh root@192.168.233.142 'cd /root/nodeapp/; docker-compose -f compose-deploy.yml up -d' 

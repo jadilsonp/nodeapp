@@ -4,7 +4,7 @@ docker container rm -f nodeapp
 
 
 #stage 1 Build
-#cd /root/nodeapp
+cd /root/nodeapp
 docker build -t jadilsonpaiva/nodeapp .
 
 

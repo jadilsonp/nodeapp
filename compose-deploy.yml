@@ -2,13 +2,9 @@ version: "3.3"
 
 services:
   app:
-    image: node:12-alpine
-    command: sh -c "yarn install && yarn run dev"
+    image: jadilsonpaiva/nodeapp 
     ports:
       - 80:3000
-    working_dir: /app
-    volumes:
-      - /root/nodeapp:/app
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
