@@ -5,9 +5,9 @@ services:
     image: jadilsonpaiva/nodeapp
     ports:
       - 80:3000
-    working_dir: /app
-    volumes:
-      - /root/nodeapp:/app
+    #working_dir: /app
+    #volumes:
+    #  - /root/nodeapp:/app
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
